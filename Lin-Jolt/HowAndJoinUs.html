@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameJolt Gaming on Linux</title>
+    <style>
+        /* Variables et mode sombre par défaut (Dark Mode) */
+        :root {
+            --bg-primary: #121311; /* Fond principal */
+            --bg-secondary: #2a2d29; /* Fond des cartes/sections */
+            --text-primary: #e0e0e0; /* Texte principal clair */
+            --text-link: #3498db; /* Bleu pour les liens standard */
+            --accent-color: #e74c3c; /* Couleur d'accentuation (Rouge/Orange) */
+            --transition-speed: 0.3s;
+        }
+
+        /* Réinitialisation et style de base */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            /* Transition pour l'animation des changements de couleurs (Dark Mode) */
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+        }
+
+        /* Conteneur principal */
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        /* En-têtes */
+        h1 {
+            text-align: center;
+            color: var(--accent-color);
+            margin-bottom: 40px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            border-bottom: 2px solid var(--bg-secondary);
+            padding-bottom: 5px;
+            color: var(--text-primary);
+            margin-top: 30px;
+            font-size: 1.8em;
+        }
+
+        /* Cartes/Sections Modernes */
+        .card {
+            background-color: var(--bg-secondary);
+            padding: 20px 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background-color var(--transition-speed), transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Liens */
+        a {
+            color: var(--text-link);
+            text-decoration: none;
+            transition: color var(--transition-speed);
+        }
+
+        a:hover {
+            color: #5dade2;
+            text-decoration: underline;
+        }
+
+        /* Liste des étapes */
+        .steps-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps-list li {
+            background-color: #383b37;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .steps-list strong {
+            color: var(--accent-color);
+        }
+
+        /* Sélecteur de langue */
+        .lang-selector {
+            text-align: right;
+            margin-bottom: 20px;
+        }
+
+        .lang-selector select {
+            background-color: var(--bg-secondary);
+            border: 1px solid #555;
+            color: var(--text-primary);
+            padding: 5px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Style pour le lien "Publicité" cliquable (CTA - Call To Action) */
+        .cta-link {
+            display: inline-block; 
+            background-color: #4a4d49; 
+            color: #f1c40f; /* Texte jaune/doré pour attirer l'attention */
+            font-weight: bold;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: 2px solid var(--accent-color); 
+            text-decoration: none;
+            transition: background-color 0.2s, transform 0.2s;
+            font-size: 1.1em;
+        }
+
+        .cta-link:hover {
+            background-color: #5a5d59;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="lang-selector">
+            <label for="lang-select" data-key="language-label">Language:</label>
+            <select id="lang-select" onchange="setLanguage(this.value)">
+                <option value="en">English (US)</option>
+                <option value="fr-fr">Français (France)</option>
+                <option value="fr-ca">Français (Canadien)</option>
+                <option value="es-es">Español (España)</option>
+                <option value="es-la">Español (América)</option>
+            </select>
+        </div>
+
+        <h1 data-key="title">GameJolt Gaming on Linux: Simple Steps & Community</h1>
+
+        <div class="card">
+            <h2 data-key="section1-title">How to Play Windows Games on Linux</h2>
+            <p data-key="section1-p1">You can play most Windows-only games from GameJolt directly on Linux! Our community uses Steam's **Proton** compatibility tool for this.</p>
+            <p data-key="section1-p2">Here’s the quick method:</p>
+
+            <ul class="steps-list">
+                <li data-key="step1"><strong>Add the game's executable file (.exe)</strong> as a "Non-Steam Game" to your Steam Library.</li>
+                <li data-key="step2">In the game's **Properties**, go to the **Compatibility** tab and check the box to "Force the use of a specific Steam Play compatibility tool" (select a **Proton** version).</li>
+            </ul>
+
+            <h3 data-key="tutorial-title">Tutorial:</h3>
+            <p data-key="tutorial-p">For a detailed, step-by-step guide, watch this video:</p>
+            <p><a href="https://youtu.be/EXAMPLE" target="_blank" data-key="tutorial-link">How to Run Non-Steam Windows Games In Proton</a></p>
+        </div>
+
+        <div class="card">
+            <h2 data-key="section2-title">Join the Linux Community on GameJolt!</h2>
+            <p data-key="section2-p1">We invite you to join our growing group of Linux users on GameJolt to **connect, share tips, and find support**!</p>
+
+            <h3 data-key="community-group-title">Main Community Group:</h3>
+            <p>
+                <span data-key="community-group-p">Join the conversation here:</span> 
+                <br>
+                <a href="https://gamejolt.com/c/LC-6vqt3d/all" target="_blank" class="cta-link">
+                    https://gamejolt.com/c/LC-6vqt3d/all
+                </a>
+            </p>
+
+            <h3 data-key="scratch-library-title">Scratch Games Library:</h3>
+            <p data-key="scratch-library-p1">Looking for popular Scratch games that have been unofficially ported to native Linux (with the original creators' permission)? Visit our dedicated library:</p>
+            <p><a href="https://gamejolt.com/@GJ-Scratch-Linux/games" target="_blank">https://gamejolt.com/@GJ-Scratch-Linux/games</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Définition des textes pour les différentes langues (i18n)
+        const translations = {
+            'en': {
+                'language-label': 'Language:',
+                'title': 'GameJolt Gaming on Linux: Simple Steps & Community',
+                'section1-title': 'How to Play Windows Games on Linux',
+                'section1-p1': 'You can play most Windows-only games from GameJolt directly on Linux! Our community uses Steam\'s **Proton** compatibility tool for this.',
+                'section1-p2': 'Here’s the quick method:',
+                'step1': '<strong>Add the game\'s executable file (.exe)</strong> as a "Non-Steam Game" to your Steam Library.',
+                'step2': 'In the game\'s **Properties**, go to the **Compatibility** tab and check the box to "Force the use of a specific Steam Play compatibility tool" (select a **Proton** version).',
+                'tutorial-title': 'Tutorial:',
+                'tutorial-p': 'For a detailed, step-by-step guide, watch this video:',
+                'tutorial-link': 'How to Run Non-Steam Windows Games In Proton',
+                'section2-title': 'Join the Linux Community on GameJolt!',
+                'section2-p1': 'We invite you to join our growing group of Linux users on GameJolt to **connect, share tips, and find support**!',
+                'community-group-title': 'Main Community Group:',
+                'community-group-p': 'Join the conversation here:',
+                'scratch-library-title': 'Scratch Games Library:',
+                'scratch-library-p1': 'Looking for popular Scratch games that have been unofficially ported to native Linux (with the original creators\' permission)? Visit our dedicated library:',
+            },
+            'fr-fr': {
+                'language-label': 'Langue :',
+                'title': 'GameJolt et le Jeu sur Linux : Étapes Simples et Communauté',
+                'section1-title': 'Comment jouer aux jeux Windows sur Linux',
+                'section1-p1': 'Vous pouvez jouer à la plupart des jeux GameJolt, même ceux réservés à Windows, directement sur Linux ! Notre communauté utilise l\'outil de compatibilité **Proton** de Steam pour cela.',
+                'section1-p2': 'Voici la méthode rapide :',
+                'step1': '<strong>Ajoutez le fichier exécutable du jeu (.exe)</strong> en tant que "Jeu non-Steam" à votre bibliothèque Steam.',
+                'step2': 'Dans les **Propriétés** du jeu, allez dans l\'onglet **Compatibilité** et cochez la case pour "Forcer l\'utilisation d\'un outil de compatibilité Steam Play spécifique" (sélectionnez une version de **Proton**).',
+                'tutorial-title': 'Tutoriel :',
+                'tutorial-p': 'Pour un guide détaillé, étape par étape, regardez cette vidéo :',
+                'tutorial-link': 'Comment exécuter des jeux Windows non-Steam avec Proton',
+                'section2-title': 'Rejoignez la Communauté Linux sur GameJolt !',
+                'section2-p1': 'Nous vous invitons à rejoindre notre groupe croissant d\'utilisateurs Linux sur GameJolt pour **vous connecter, partager des astuces et trouver du soutien** !',
+                'community-group-title': 'Groupe Communautaire Principal :',
+                'community-group-p': 'Rejoignez la conversation ici :',
+                'scratch-library-title': 'Bibliothèque de Jeux Scratch :',
+                'scratch-library-p1': 'Vous cherchez des jeux Scratch populaires qui ont été portés non officiellement vers Linux natif (avec la permission des créateurs originaux) ? Visitez notre bibliothèque dédiée :',
+            },
+            'fr-ca': {
+                'language-label': 'Langue :',
+                'title': 'GameJolt et le Gaming sur Linux : Étapes Simples et Communauté',
+                'section1-title': 'Comment jouer aux jeux Windows sur Linux',
+                'section1-p1': 'Vous pouvez jouer à la plupart des jeux GameJolt, même ceux pour Windows, directement sur Linux ! Notre communauté utilise l\'outil de compatibilité **Proton** de Steam pour ça.',
+                'section1-p2': 'Voici la méthode rapide :',
+                'step1': '<strong>Ajoutez le fichier exécutable du jeu (.exe)</strong> comme un "Jeu non-Steam" à votre librairie Steam.',
+                'step2': 'Dans les **Propriétés** du jeu, allez dans l\'onglet **Compatibilité** et cochez la case pour "Forcer l\'utilisation d\'un outil de compatibilité Steam Play spécifique" (sélectionnez une version de **Proton**).',
+                'tutorial-title': 'Tutoriel :',
+                'tutorial-p': 'Pour un guide détaillé, étape par étape, regardez cette vidéo :',
+                'tutorial-link': 'Comment exécuter des jeux Windows non-Steam avec Proton',
+                'section2-title': 'Joignez-vous à la Communauté Linux sur GameJolt !',
+                'section2-p1': 'Nous vous invitons à joindre notre groupe grandissant d\'utilisateurs Linux sur GameJolt pour **connecter, partager des trucs et trouver du support** !',
+                'community-group-title': 'Groupe Communautaire Principal :',
+                'community-group-p': 'Joignez la conversation ici :',
+                'scratch-library-title': 'Librairie de Jeux Scratch :',
+                'scratch-library-p1': 'Vous cherchez des jeux Scratch populaires qui ont été portés non officiellement vers Linux natif (avec la permission des créateurs originaux) ? Visitez notre librairie dédiée :',
+            },
+            'es-es': {
+                'language-label': 'Idioma:',
+                'title': 'Juegos de GameJolt en Linux: Pasos Sencillos y Comunidad',
+                'section1-title': 'Cómo Jugar a Juegos de Windows en Linux',
+                'section1-p1': '¡Puedes jugar a la mayoría de los juegos de GameJolt exclusivos para Windows directamente en Linux! Nuestra comunidad utiliza la herramienta de compatibilidad **Proton** de Steam para esto.',
+                'section1-p2': 'Aquí está el método rápido:',
+                'step1': '<strong>Añade el archivo ejecutable del juego (.exe)</strong> como un "Juego No-Steam" a tu Biblioteca de Steam.',
+                'step2': 'En las **Propiedades** del juego, ve a la pestaña de **Compatibilidad** y marca la casilla "Forzar el uso de una herramienta de compatibilidad de Steam Play específica" (selecciona una versión de **Proton**).',
+                'tutorial-title': 'Tutorial:',
+                'tutorial-p': 'Para una guía detallada, paso a paso, mira este vídeo:',
+                'tutorial-link': 'Cómo ejecutar juegos de Windows No-Steam con Proton',
+                'section2-title': '¡Únete a la Comunidad Linux en GameJolt!',
+                'section2-p1': '¡Te invitamos a unirte a nuestro creciente grupo de usuarios de Linux en GameJolt para **conectar, compartir consejos y encontrar apoyo**!',
+                'community-group-title': 'Grupo Principal de la Comunidad:',
+                'community-group-p': 'Únete a la conversación aquí:',
+                'scratch-library-title': 'Biblioteca de Juegos Scratch:',
+                'scratch-library-p1': '¿Buscas juegos populares de Scratch que hayan sido portados de forma no oficial a Linux nativo (con el permiso de los creadores originales)? Visita nuestra biblioteca dedicada:',
+            },
+            'es-la': {
+                'language-label': 'Idioma:',
+                'title': 'Juegos de GameJolt en Linux: Pasos Simples y Comunidad',
+                'section1-title': 'Cómo Jugar Juegos de Windows en Linux',
+                'section1-p1': '¡Puedes jugar la mayoría de los juegos de GameJolt exclusivos para Windows directamente en Linux! Nuestra comunidad usa la herramienta de compatibilidad **Proton** de Steam para esto.',
+                'section1-p2': 'Aquí está el método rápido:',
+                'step1': '<strong>Agrega el archivo ejecutable del juego (.exe)</strong> como un "Juego No-Steam" a tu Biblioteca de Steam.',
+                'step2': 'En las **Propiedades** del juego, ve a la pestaña de **Compatibilidad** y marca la casilla "Forzar el uso de una herramienta de compatibilidad de Steam Play específica" (selecciona una versión de **Proton**).',
+                'tutorial-title': 'Tutorial:',
+                'tutorial-p': 'Para una guía detallada, paso a paso, mira este video:',
+                'tutorial-link': 'Cómo ejecutar juegos de Windows No-Steam con Proton',
+                'section2-title': '¡Únete a la Comunidad Linux en GameJolt!',
+                'section2-p1': '¡Te invitamos a unirte a nuestro creciente grupo de usuarios de Linux en GameJolt para **conectar, compartir tips y encontrar apoyo**!',
+                'community-group-title': 'Grupo Principal de la Comunidad:',
+                'community-group-p': 'Únete a la conversación aquí:',
+                'scratch-library-title': 'Biblioteca de Juegos Scratch:',
+                'scratch-library-p1': '¿Buscas juegos populares de Scratch que han sido porteados de forma no oficial a Linux nativo (con el permiso de los creadores originales)? Visita nuestra biblioteca dedicada:',
+            }
+        };
+
+        // Fonction pour appliquer la traduction
+        function setLanguage(lang) {
+            const t = translations[lang];
+            if (!t) return;
+
+            document.documentElement.lang = lang;
+
+            // Parcourt tous les éléments avec un attribut data-key et les met à jour
+            document.querySelectorAll('[data-key]').forEach(element => {
+                const key = element.getAttribute('data-key');
+                if (t[key]) {
+                    // Utiliser innerHTML pour permettre le gras (<strong>)
+                    element.innerHTML = t[key];
+                }
+            });
+
+            document.getElementById('lang-select').value = lang;
+            localStorage.setItem('gamejolt-linux-lang', lang);
+        }
+
+        // Initialisation de la langue au chargement
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('gamejolt-linux-lang') || 'en';
+            setLanguage(savedLang);
+        });
+    </script>
+</body>
+</html>
