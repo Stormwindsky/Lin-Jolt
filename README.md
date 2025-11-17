@@ -1,6 +1,10 @@
 # Lin-Jolt
 Lin-Jolt is a Unofficial Linux Port of Gamejolt Launcher
 
+The latest available compiled version:
+
+https://gamejolt.com/games/LJ/1030612
+
 # PLEASE NOTE
 
 Note that some content may be in another project, such as:
