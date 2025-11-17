@@ -5,8 +5,7 @@ Lin-Jolt is a Unofficial Linux Port of Gamejolt Launcher
 
 Note that some content may be in another project, such as:
 
-https://github.com/Stormwindsky/Lin-Jolt-Emoji-License-Only
-
+https://github.com/Stormwindsky/Lin-Jolt-Emoji-Icon-License-Only
 
 # WARNING
 
