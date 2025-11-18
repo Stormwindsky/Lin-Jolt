@@ -1,7 +1,7 @@
 {
-  "name": "votre-app-electron",
+  "name": "Lin-Jolt",
   "version": "1.0.0",
-  "description": "Une application Electron basée sur votre site web.",
+  "description": "An unofficial Gamejolt app for Linux",
   "main": "main.js",
   "scripts": {
     "start": "electron ."
@@ -10,8 +10,8 @@
     "electron",
     "website"
   ],
-  "author": "Votre Nom",
-  "license": "ISC",
+  "author": "Stormwindsky",
+  "license": "MIT",
   "devDependencies": {
     "electron": "^28.0.0" 
   }
