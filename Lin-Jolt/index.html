@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { background: #0f0f0f; color: #fff; font-family: 'Segoe UI', sans-serif; margin: 0; overflow: hidden; }
+        #main-ui { display: flex; flex-direction: column; height: 100vh; }
+        nav { background: #1a1a1a; padding: 10px; display: flex; gap: 10px; border-bottom: 2px solid #ccff00; align-items: center; }
+        nav button { background: none; border: 1px solid #ccff00; color: #ccff00; padding: 8px 12px; cursor: pointer; border-radius: 5px; font-weight: bold; font-size: 13px; }
+        nav button:hover { background: #ccff00; color: #000; }
+        .lang-select { margin-left: auto; background: #333; color: white; border: 1px solid #ccff00; padding: 5px; border-radius: 5px; }
+        
+        #content { flex: 1; position: relative; }
+        iframe { width: 100%; height: 100%; border: none; display: none; }
+        #gallery { display: none; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; padding: 30px; overflow-y: auto; height: 95%; }
+        .game-card { background: #1e1e1e; border-radius: 10px; padding: 20px; text-align: center; border: 1px solid #333; }
+        .btn-play { background: #ccff00; color: #000; border: none; padding: 10px; border-radius: 20px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
+        footer { position: fixed; bottom: 5px; right: 10px; font-size: 10px; color: #555; }
+    </style>
+</head>
+<body>
+
+<div id="main-ui">
+    <nav>
+        <button id="btn-gj" onclick="showURL('https://gamejolt.com')">🌐 Game Jolt</button>
+        <button id="btn-comm" onclick="showURL('https://gamejolt.com/c/LC-6vqt3d/all')">🐧 Linux Community</button>
+        <button id="btn-apps" onclick="showApps()">📂 Apps</button>
+        
+        <select class="lang-select" id="langSelector" onchange="changeLanguage(this.value)">
+            <option value="en">English</option>
+            <option value="fr">Français</option>
+        </select>
+    </nav>
+
+    <div id="content">
+        <iframe id="main-frame" src="https://gamejolt.com"></iframe>
+        <div id="gallery">
+            <h1 id="gallery-title" style="grid-column: 1/-1">My Installed Games</h1>
+            <div id="app-list" style="display: contents;"></div>
+        </div>
+    </div>
+</div>
+
+<footer>Lin-Jolt by Stormwindsky - MIT License</footer>
+
+<script>
+    const { ipcRenderer } = require('electron');
+    
+    const translations = {
+        en: {
+            btnGj: "🌐 Game Jolt",
+            btnComm: "🐧 Linux Gamejolt Community",
+            btnApps: "📂 My Apps",
+            galleryTitle: "My Installed Games",
+            play: "Launch with Wine",
+            noApps: "No games detected."
+        },
+        fr: {
+            btnGj: "🌐 Game Jolt",
+            btnComm: "🐧 Communauté Gamejolt Linux",
+            btnApps: "📂 Mes Apps",
+            galleryTitle: "Mes Jeux Installés",
+            play: "Lancer avec Wine",
+            noApps: "Aucun jeu détecté."
+        }
+    };
+
+    function applyLanguage(lang) {
+        document.getElementById('btn-gj').innerText = translations[lang].btnGj;
+        document.getElementById('btn-comm').innerText = translations[lang].btnComm;
+        document.getElementById('btn-apps').innerText = translations[lang].btnApps;
+        document.getElementById('gallery-title').innerText = translations[lang].galleryTitle;
+        localStorage.setItem('linjolt_lang', lang);
+    }
+
+    function changeLanguage(lang) {
+        applyLanguage(lang);
+        if (document.getElementById('gallery').style.display === "grid") showApps();
+    }
+
+    function showURL(url) {
+        const frame = document.getElementById('main-frame');
+        frame.style.display = "block";
+        document.getElementById('gallery').style.display = "none";
+        frame.src = url;
+    }
+
+    function showApps() {
+        document.getElementById('main-frame').style.display = "none";
+        document.getElementById('gallery').style.display = "grid";
+        ipcRenderer.send('get-apps');
+    }
+
+    ipcRenderer.on('apps-data', (event, apps) => {
+        const lang = localStorage.getItem('linjolt_lang') || 'en';
+        const list = document.getElementById('app-list');
+        list.innerHTML = '';
+        if (apps.length === 0) { list.innerHTML = `<p>${translations[lang].noApps}</p>`; return; }
+
+        apps.forEach(app => {
+            const div = document.createElement('div');
+            div.className = 'game-card';
+            div.innerHTML = `<h3>${app.name}</h3><button class="btn-play" onclick="ipcRenderer.send('launch-app', {path:'${app.path.replace(/\\/g, '/')}', exe:'${app.exe}'})">${translations[lang].play}</button>`;
+            list.appendChild(div);
+        });
+    });
+
+    window.onload = () => {
+        const savedLang = localStorage.getItem('linjolt_lang') || 'en';
+        document.getElementById('langSelector').value = savedLang;
+        applyLanguage(savedLang);
+    };
+</script>
+</body>
+</html>
