@@ -1,4 +1,4 @@
 # 🐧 Lin-Jolt
-**Unofficial Game Jolt Client for Linux** Created by **Stormwindsky** | Licensed under **GPL License v3.0**
+**Unofficial GameJolt Client for Linux** Created by **Stormwindsky** | Licensed under **GPL-v3.0 License**
 
-Lin-Jolt is a lightweight Electron-based launcher for Game Jolt on Linux. It features a built-in adblocker, a direct link to the Linux GameJolt community
+Lin-Jolt is a lightweight Electron-based launcher for GameJolt on Linux. It features a built-in adblocker, a direct link to the Linux GameJolt community
